@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quali - How much do you need to pass the subject</title>
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+        
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>        <script type="text/javascript" src="script.js"></script>
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    </head>
+    <body ng-app="Quali" ng-controller="QualiController">
+        <div class="container-fluid">
+          <h1>Quali - The best Application Ever Made</h1>
+
+        <div class="row">
+            <form class="form-inline">
+            <div class="form-control">
+                <label>Qualification:</label>
+                <input type="number" ng-model="qualiOne">
+            </div>
+            <button class="btn btn-secondary" ng-click="addQuali()">Agregar Nota</button>
+
+            </form>
+            
+
+
+            <div class="row" >
+              <div class="col-md-2" ng-repeat="quali in qualifications">
+                <div class="card card-block">
+                  <h3 class="card-title">Value: {{quali.Quali}}</h3>
+                  <button class="btn btn-secondary" ng-click="removeQuali()">Remove</button>
+                </div>
+              </div>
+  
+           
+        </div>
+        
+    </body>
+</html>
