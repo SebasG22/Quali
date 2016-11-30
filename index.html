@@ -34,9 +34,14 @@
               <div class="col-md-2" ng-repeat="quali in qualifications">
                 <div class="card card-block">
                   <h3 class="card-title">Value: {{quali.Quali}}</h3>
-                  <button class="btn btn-secondary" ng-click="removeQuali()">Remove</button>
+                  <button class="btn btn-secondary" ng-click="removeQuali(quali)">Remove</button>
                 </div>
               </div>
+              
+              <button class="btn btn-secondary" ng-click="execute()">Execute</button>
+  
+  
+  {{resultado || json }}
   
            
         </div>

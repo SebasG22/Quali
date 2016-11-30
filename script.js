@@ -11,11 +11,13 @@
   firebase.initializeApp(config);
     
     angular.module("Quali",["firebase"])
-    .controller("QualiController", function ($scope,$firebaseArray,$firebaseObject){
+    .controller("QualiController", function ($scope,$http,$window,$firebaseArray,$firebaseObject){
         
         var ref = firebase.database().ref().child("Qualifications");
         
        $scope.qualifications= $firebaseArray(ref);
+       
+       $scope.resultado={};
         
         $scope.qualiOne=4;
         $scope.qualiTwo;
@@ -28,14 +30,40 @@
             ).then(function(ref){
                console.log("Qaulification added");    
             });
-        $scope.removeQuali = function (){
+            
+        $scope.removeQuali = function (item){
             console.log("Action Called");
-            var item= $scope.qualifications[2];
+            //var item= $scope.qualifications[2];
             $scope.qualifications.$remove(item)
                 .then(function(ref){
                     console.log("Qualification removed");
             });
-        }    
+        } 
+        
+        $scope.execute = function () {
+          console.log("Execute");
+          var peticion = {
+            method  : 'JSONP',
+            url     : 'https://script.google.com/macros/s/AKfycbxYNZ8NKLKfeR_Y3G_fTDROHACGezcwFXu-FZuam5caQZIeghU/exec',
+            params  : {
+                callback  : 'JSON_CALLBACK',
+            }
+          };
+          
+          $http(peticion)
+            .then( 
+              
+              //ok
+              function(response) {
+                $scope.resultado = response.data;
+              }, 
+              
+              // error 
+              function(error) {
+                $window.alert("error");
+              }
+            );
+        }
       }
     });
     
